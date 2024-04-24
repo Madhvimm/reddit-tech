@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Group 5 Big Data Project – nlp</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./ml.html" rel="next">
+<link href="./eda.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./nlp.html">Natural Language Processing</a></li><li class="breadcrumb-item"><a href="./nlp.html">Executive Summary</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Decoding Reddit’s Influence on Tech Stocks</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Overview</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data-sources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Sources</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./business-goals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Business Goals</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Exploratory Data Analysis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./eda.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exploratory Data Analysis</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Natural Language Processing</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./nlp.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Executive Summary</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Machine Learning</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ml.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ML</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">Conclusion</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./conclusion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Conclusion</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#executive-summary" id="toc-executive-summary" class="nav-link active" data-scroll-target="#executive-summary">Executive Summary</a></li>
+  <li><a href="#identifying-most-frequently-discussed-technical-products-in-rtechnology" id="toc-identifying-most-frequently-discussed-technical-products-in-rtechnology" class="nav-link" data-scroll-target="#identifying-most-frequently-discussed-technical-products-in-rtechnology">6. Identifying Most Frequently Discussed Technical Products in r/Technology</a>
+  <ul class="collapse">
+  <li><a href="#preprocessing-text-data" id="toc-preprocessing-text-data" class="nav-link" data-scroll-target="#preprocessing-text-data">Preprocessing Text Data</a></li>
+  <li><a href="#identifying-topics-of-interest" id="toc-identifying-topics-of-interest" class="nav-link" data-scroll-target="#identifying-topics-of-interest">Identifying Topics of Interest</a></li>
+  <li><a href="#distribution-of-topics" id="toc-distribution-of-topics" class="nav-link" data-scroll-target="#distribution-of-topics">Distribution of Topics</a></li>
+  <li><a href="#most-discussed-technical-products" id="toc-most-discussed-technical-products" class="nav-link" data-scroll-target="#most-discussed-technical-products">Most Discussed Technical Products</a></li>
+  <li><a href="#distribution-of-technical-products" id="toc-distribution-of-technical-products" class="nav-link" data-scroll-target="#distribution-of-technical-products">Distribution of Technical Products</a></li>
+  <li><a href="#time-series-analysis-of-chatgpt-discussions" id="toc-time-series-analysis-of-chatgpt-discussions" class="nav-link" data-scroll-target="#time-series-analysis-of-chatgpt-discussions">Time-Series Analysis of ChatGPT Discussions</a></li>
+  </ul></li>
+  <li><a href="#analyzing-mean-sentiment-scores-of-technology-products-over-time" id="toc-analyzing-mean-sentiment-scores-of-technology-products-over-time" class="nav-link" data-scroll-target="#analyzing-mean-sentiment-scores-of-technology-products-over-time">7. Analyzing Mean Sentiment Scores of Technology Products Over Time</a>
+  <ul class="collapse">
+  <li><a href="#sentiment-score-of-different-topics-of-technology-products" id="toc-sentiment-score-of-different-topics-of-technology-products" class="nav-link" data-scroll-target="#sentiment-score-of-different-topics-of-technology-products">Sentiment Score of Different Topics of Technology Products</a></li>
+  <li><a href="#sentiment-over-time-for-key-technical-products" id="toc-sentiment-over-time-for-key-technical-products" class="nav-link" data-scroll-target="#sentiment-over-time-for-key-technical-products">Sentiment Over Time for Key Technical Products</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+
+<section id="executive-summary" class="level1">
+<h1>Executive Summary</h1>
+<div class="main" style="text-align: justify; text-justify: inter-word;">
+<p>In our comprehensive analysis of the <code>r/Technology</code> subreddit, we achieved two significant milestones: uncovering the central themes that are currently engaging the tech community and tracking how sentiments towards key tech products evolve over time.</p>
+<p>Through our investigation into the vast conversations happening on Reddit, we’ve identified not just the major talking points like artificial intelligence and virtual reality but also the rising stars of tech discussions. Furthermore, we’ve measured the pulse of public opinion on flagship technology products through a sentiment analysis that paints a picture of how feelings and perspectives change with developments over time. Products like ChatGPT and Copilot have stood out, drawing considerable attention and discussion within the subreddit. These insights are a compass for companies looking to understand and respond to user feedback, market their products effectively, and anticipate the next wave of consumer interest. Our non-technical synthesis of community sentiment is a gauge of market temperatures—vital for any tech entity looking to stay ahead in the rapidly evolving digital landscape.</p>
+</div>
+</section>
+<section id="identifying-most-frequently-discussed-technical-products-in-rtechnology" class="level1">
+<h1>6. Identifying Most Frequently Discussed Technical Products in r/Technology</h1>
+<section id="preprocessing-text-data" class="level2">
+<h2 class="anchored" data-anchor-id="preprocessing-text-data">Preprocessing Text Data</h2>
+<div class="main" style="text-align: justify; text-justify: inter-word;">
+<p>To initiate our natural language processing (NLP) task, we first preprocess the text data in both submissions and comments within the <code>r/Technology</code> subreddit. This involves normalizing the text, checking spelling, removing stopwords to prevent bias, and lemmatizing words to convert them to their original forms. We create a pipeline to streamline these tasks for both submissions and comments.</p>
+</div>
+</section>
+<section id="identifying-topics-of-interest" class="level2">
+<h2 class="anchored" data-anchor-id="identifying-topics-of-interest">Identifying Topics of Interest</h2>
+<div class="main" style="text-align: justify; text-justify: inter-word;">
+<p>In our investigation of the <code>r/Technology</code> subreddit, we prioritized several prominent technology-related topics to better understand and categorize the discourse. Specifically, we focused on “Artificial Intelligence (AI),” “Artificial General Intelligence (AGI),” “Autonomous Driving,” “Virtual Reality (VR),” and “Robotics.” These categories were selected due to their significant impact and relevance in the current technological landscape, as well as their frequent discussion among technology enthusiasts.</p>
+<p>Our keyword strategy for analyzing the <code>r/Technology</code> subreddit is meticulously designed to target discussions central to each identified technological theme. Each theme, such as Artificial Intelligence or Robotics, is associated with a carefully selected set of keywords that encompass a broad range of sub-topics and related technologies. For instance, under “Artificial Intelligence,” the list spans general terms like “AI” to specific technologies and applications such as “deep learning,” “natural language processing,” and even names of prominent AI models like “BERT” and “RoBERTa.” This comprehensive coverage ensures that our analysis captures all pertinent discussions, from overarching conversations about AI to nuanced debates on its applications and ethical considerations.</p>
+<center>
+<figure class="figure">
+<figcaption class="figure-caption">
+<p><strong><strong>Table 1: Keywords in each topic</strong></strong></p>
+<table class="table">
+<colgroup>
+<col style="width: 19%">
+<col style="width: 80%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><topic></topic></th>
+<th><keywords></keywords></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Artificial Intelligence</td>
+<td>artificial intelligence, ai, machine learning, deep learning, neural network, natural language processing,</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>nlp, computer vision, ai ethics, ai policy, chatgpt, gpt-3, openai, copilot, github copilot, bard, google</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>bard, lamda, ai dungeon, hugging face, transformer models, bert, roberta, t5, automl, tensorflow, pytorch,</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>scikit-learn</td>
+</tr>
+<tr class="odd">
+<td>Artificial General Intelligence</td>
+<td>agi, artificial general intelligence, deepmind, ben goertzel, ray kurzweil, nick bostrom, cognitive</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>architecture, whole brain emulation</td>
+</tr>
+<tr class="odd">
+<td>Autonomous Driving</td>
+<td>waymo, tesla autopilot, self-driving car, autonomous vehicle, cruise automation, aurora, nuro, aptiv,</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>mobileye, lidar, radar sensor, computer vision, navigation system, v2x communication, electric vehicle,</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>evs, adas</td>
+</tr>
+<tr class="even">
+<td>Virtual Reality</td>
+<td>oculus, oculus rift, oculus quest, vr headset, htc vive, sony playstation vr, samsung gear vr, virtual</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>reality, augmented reality, ar, mixed reality, mr, xr, 360-degree video, immersive technology, haptic</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>feedback</td>
+</tr>
+<tr class="odd">
+<td>Robotics</td>
+<td>robot, robotic, roomba, boston dynamics, industrial robot, service robot, companion robot, surgical</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>robot, drone, uav, robotic arm, manipulator, autonomous robot, robotic surgery, robotic process automation,</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>rpa, humanoid robot</td>
+</tr>
+</tbody>
+</table>
+</figcaption>
+</figure>
+</center>
+<p>Our keyword strategy for analyzing the <code>r/Technology</code> subreddit is meticulously designed to target discussions central to each identified technological theme. Each theme, such as Artificial Intelligence or Robotics, is associated with a carefully selected set of keywords that encompass a broad range of sub-topics and related technologies. For instance, under “Artificial Intelligence,” the list spans general terms like “AI” to specific technologies and applications such as “deep learning,” “natural language processing,” and even names of prominent AI models like “BERT” and “RoBERTa.” This comprehensive coverage ensures that our analysis captures all pertinent discussions, from overarching conversations about AI to nuanced debates on its applications and ethical considerations.</p>
+<p>The relevance and specificity of our keywords are crucial for accurately extracting discussions explicitly related to the intended technological domains. Keywords like “oculus” or “tesla autopilot” are specific enough to unambiguously refer to virtual reality and autonomous driving, respectively. This targeted approach enhances the precision of our topic modeling efforts using Latent Dirichlet Allocation (LDA), reducing noise and sharpening the thematic structures that emerge from the model. Additionally, including the latest terms and technologies in our keyword list, such as “chatgpt” and “google bard,” helps our analysis remain current and adaptable to emerging trends. By leveraging these keywords, we can not only filter and categorize subreddit content effectively but also identify shifts in the technology landscape through the frequency and context of keyword mentions. This strategic use of a keyword table ensures that our analysis is focused, relevant, and insightful, offering a comprehensive view of the technological discussions within the <code>r/Technology</code> community.</p>
+</div>
+</section>
+<section id="distribution-of-topics" class="level2">
+<h2 class="anchored" data-anchor-id="distribution-of-topics">Distribution of Topics</h2>
+<div class="main" style="text-align: justify; text-justify: inter-word;">
+<p>To gain insights into the focus areas of discussions within the <code>r/Technology</code> subreddit, we analyzed the distribution of posts and comments across five key topics: Artificial Intelligence (AI), Artificial General Intelligence (AGI), Autonomous Driving (Self-Drive), Virtual Reality (VR), and Robotics (Robot). The data highlights a significant skew towards AI and Robotics in both submissions and comments, indicating these are highly engaging areas within the technology community on Reddit. AI, being a broad and impactful area, sees the highest engagement, which is expected given its influence across multiple sectors and its presence in public discourse. Robotics also shows substantial discussion volume, reflecting widespread interest likely driven by advancements in consumer technology, industrial applications, and automation.</p>
+<center>
+<figure class="figure">
+<figcaption class="figure-caption">
+<p><strong><strong>Table 2: Top 5 Topics accross Submission</strong></strong></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Topic</th>
+<th>Count</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>AI</td>
+<td>5319</td>
+</tr>
+<tr class="even">
+<td>AGI</td>
+<td>82</td>
+</tr>
+<tr class="odd">
+<td>Self-Drive</td>
+<td>57</td>
+</tr>
+<tr class="even">
+<td>VR</td>
+<td>423</td>
+</tr>
+<tr class="odd">
+<td>Robot</td>
+<td>2821</td>
+</tr>
+</tbody>
+</table>
+</figcaption>
+</figure>
+</center>
+<p>Conversely, AGI and Autonomous Driving discussions are less frequent. This could suggest that while important, these topics might currently resonate less with the general <code>r/Technology</code> audience or are discussed in more specialized contexts not captured entirely within this subreddit.</p>
+<center>
+<figure class="figure">
+<figcaption class="figure-caption">
+<p><strong><strong>Table 3: Top 5 Topics accross Comments</strong></strong></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Topic</th>
+<th>Count</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>AI</td>
+<td>77930</td>
+</tr>
+<tr class="even">
+<td>AGI</td>
+<td>1110</td>
+</tr>
+<tr class="odd">
+<td>Self-Drive</td>
+<td>1203</td>
+</tr>
+<tr class="even">
+<td>VR</td>
+<td>19176</td>
+</tr>
+<tr class="odd">
+<td>Robot</td>
+<td>34484</td>
+</tr>
+</tbody>
+</table>
+</figcaption>
+</figure>
+</center>
+</div>
+</section>
+<section id="most-discussed-technical-products" class="level2">
+<h2 class="anchored" data-anchor-id="most-discussed-technical-products">Most Discussed Technical Products</h2>
+<div class="main" style="text-align: justify; text-justify: inter-word;">
+<p>Next, we identify the most frequently discussed technical products within each topic. We compile a list of key products associated with each technology theme, such as ChatGPT for AI, DeepMind for AGI, Waymo for Self-Driving, Oculus Quest for VR, and Drone for Robotics. By matching word terms and tokens, we identify comments and submissions pertaining to these products.</p>
+<p>This table reveals the focal points of technology discussions. For instance, in AI, ChatGPT and Google Bard highlight the public’s interest in conversational AI and the developments brought forward by major tech companies. In VR, products like Oculus Quest and emerging concepts like the Metaverse indicate a strong consumer interest in immersive technologies. The focus on specific brands and products such as Waymo in Autonomous Driving shows targeted discussions likely influenced by these companies’ market activities and media coverage.The distributions and product focuses provide a clear view of what technologies captivate the community, offering insights into consumer awareness and sentiment.</p>
+<center>
+<figure class="figure">
+<figcaption class="figure-caption">
+<p><strong><strong>Table 4: Most frequently discussed technical products within each topic</strong></strong></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Category</th>
+<th>Technologies</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>AI</td>
+<td>ChatGPT</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>Google Bard</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>Github Copilot</td>
+</tr>
+<tr class="even">
+<td>AGI</td>
+<td>DeepMind</td>
+</tr>
+<tr class="odd">
+<td>Self-Drive</td>
+<td>Waymo</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>Mobileye</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>Aurora</td>
+</tr>
+<tr class="even">
+<td>VR</td>
+<td>Oculus Quest</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>Apple AR</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>Metaverse</td>
+</tr>
+<tr class="odd">
+<td>Robot</td>
+<td>Drone</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>Robot Dog</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>Humanoid Robot</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>Roomba</td>
+</tr>
+</tbody>
+</table>
+</figcaption>
+</figure>
+</center>
+<center>
+<figure class="figure">
+<figcaption class="figure-caption">
+<p><strong><strong>Table 5: Matching pattern of each technical product</strong></strong></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Category</th>
+<th>Keywords</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>chatgpt</td>
+<td>chatgpt, gpt, chatgpts, chatgptlike, open ai</td>
+</tr>
+<tr class="even">
+<td>bard</td>
+<td>bard</td>
+</tr>
+<tr class="odd">
+<td>copilot</td>
+<td>copilot</td>
+</tr>
+<tr class="even">
+<td>deepmind</td>
+<td>deepmind</td>
+</tr>
+<tr class="odd">
+<td>waymo</td>
+<td>waymo</td>
+</tr>
+<tr class="even">
+<td>mobileye</td>
+<td>mobileye</td>
+</tr>
+<tr class="odd">
+<td>aurora</td>
+<td>aurora</td>
+</tr>
+<tr class="even">
+<td>oculus</td>
+<td>oculus</td>
+</tr>
+<tr class="odd">
+<td>apple</td>
+<td>apple vr</td>
+</tr>
+<tr class="even">
+<td>metaverse</td>
+<td>metaverse</td>
+</tr>
+<tr class="odd">
+<td>drone</td>
+<td>drone</td>
+</tr>
+<tr class="even">
+<td>dog</td>
+<td>robot dog</td>
+</tr>
+<tr class="odd">
+<td>humanoid</td>
+<td>humanoid robot</td>
+</tr>
+<tr class="even">
+<td>roomba</td>
+<td>roomba</td>
+</tr>
+</tbody>
+</table>
+</figcaption>
+</figure>
+</center>
+</div>
+</section>
+<section id="distribution-of-technical-products" class="level2">
+<h2 class="anchored" data-anchor-id="distribution-of-technical-products">Distribution of Technical Products</h2>
+<div class="main" style="text-align: justify; text-justify: inter-word;">
+<p>To deepen our understanding of the specific interests within the <code>r/Technology</code> subreddit, we analyzed the distribution of discussions related to distinct technical products. This analysis helps us pinpoint which products are most talked about and gauge their impact or popularity within the community.</p>
+<p>The distribution of submissions reveals a high level of interest in products such as ChatGPT and the concept of the Metaverse, indicating these areas are particularly engaging to the subreddit’s audience. ChatGPT stands out as the most discussed product, likely due to its recent advancements and public visibility. Similarly, the Metaverse, representing a broad range of virtual and augmented reality technologies, shows substantial interest, highlighting the community’s fascination with future digital environments.</p>
+<center>
+<figure class="figure">
+<figcaption class="figure-caption">
+<p><strong><strong>Table 6: Top 5 Technical Products in Submissions</strong></strong></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Entity</th>
+<th>Count</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>chatgpt</td>
+<td>1347</td>
+</tr>
+<tr class="even">
+<td>bard</td>
+<td>104</td>
+</tr>
+<tr class="odd">
+<td>copilot</td>
+<td>51</td>
+</tr>
+<tr class="even">
+<td>deepmind</td>
+<td>57</td>
+</tr>
+<tr class="odd">
+<td>waymo</td>
+<td>41</td>
+</tr>
+<tr class="even">
+<td>mobileye</td>
+<td>14</td>
+</tr>
+<tr class="odd">
+<td>aurora</td>
+<td>8</td>
+</tr>
+<tr class="even">
+<td>oculus</td>
+<td>78</td>
+</tr>
+<tr class="odd">
+<td>apple</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>metaverse</td>
+<td>1181</td>
+</tr>
+<tr class="odd">
+<td>drone</td>
+<td>848</td>
+</tr>
+<tr class="even">
+<td>dog</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>humanoid</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>roomba</td>
+<td>27</td>
+</tr>
+</tbody>
+</table>
+</figcaption>
+</figure>
+</center>
+<p>The distribution of comments supports the trends observed in submissions, with ChatGPT and the Metaverse again leading in discussion counts. However, the volume of comments is significantly higher, suggesting these topics not only attract attention but also provoke extensive conversations and debates among users. Oculus also emerges as a major discussion point in comments, underscoring its prominence in the VR sector.</p>
+<center>
+<figure class="figure">
+<figcaption class="figure-caption">
+<p><strong><strong>Table 7: Top 5 Technical Products in Comments</strong></strong></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Entity</th>
+<th>Count</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>chatgpt</td>
+<td>16038</td>
+</tr>
+<tr class="even">
+<td>bard</td>
+<td>571</td>
+</tr>
+<tr class="odd">
+<td>copilot</td>
+<td>631</td>
+</tr>
+<tr class="even">
+<td>deepmind</td>
+<td>218</td>
+</tr>
+<tr class="odd">
+<td>waymo</td>
+<td>1118</td>
+</tr>
+<tr class="even">
+<td>mobileye</td>
+<td>77</td>
+</tr>
+<tr class="odd">
+<td>aurora</td>
+<td>79</td>
+</tr>
+<tr class="even">
+<td>oculus</td>
+<td>5921</td>
+</tr>
+<tr class="odd">
+<td>apple</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>metaverse</td>
+<td>21136</td>
+</tr>
+<tr class="odd">
+<td>drone</td>
+<td>8650</td>
+</tr>
+<tr class="even">
+<td>dog</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>humanoid</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>roomba</td>
+<td>1973</td>
+</tr>
+</tbody>
+</table>
+</figcaption>
+</figure>
+</center>
+<p>This focused analysis on technical products provides valuable insights into which technologies captivate the community’s interest and which might be receiving less attention (e.g., Apple VR, Robot Dog, and Humanoid Robots showing zero counts). Understanding these dynamics can be crucial for stakeholders, including tech companies, marketers, and industry analysts, to identify current trends, potential growth areas, and consumer sentiments within the technology sector.</p>
+<p>Moreover, the notable differences in discussion intensity between submissions and comments for certain products suggest varying levels of user engagement that could reflect broader trends in consumer interest or controversies surrounding these technologies</p>
+</div>
+</section>
+<section id="time-series-analysis-of-chatgpt-discussions" class="level2">
+<h2 class="anchored" data-anchor-id="time-series-analysis-of-chatgpt-discussions">Time-Series Analysis of ChatGPT Discussions</h2>
+<div class="main" style="text-align: justify; text-justify: inter-word;">
+<p>Our time-series analysis reveals the evolution of discussions around ChatGPT on the <code>r/Technology</code> subreddit. With the first visualization representing submission volume and the second showing comments, both graphs exhibit notable trends corresponding to significant events in ChatGPT’s timeline.</p>
+<p>The graph for submission volume indicates an initial period of relatively low activity, followed by a marked surge aligning with the public release of ChatGPT. This surge demonstrates the impact of the release on the community, capturing the influx of user interest and discussions.</p>
+<p><img src="Pics/nlp1.png" class="img-fluid"></p>
+<p>Similarly, the comment volume graph illustrates a significant peak following ChatGPT’s introduction, dwarfing previous activity. A notable increase in discussions can also be seen at the time of the ChatGPT Plus announcement, showcasing the product’s growing influence and its ability to drive public conversation.</p>
+<p><img src="Pics/nlp2.png" class="img-fluid"></p>
+<p>In both plots, the escalation in discussion volume post-ChatGPT introduction is evident, highlighting how technological advancements can rapidly shift the focus of community discourse. The stabilization of conversation after the initial spike may suggest that while the novelty factor wears off, the sustained interest levels indicate ChatGPT’s entrenchment in tech discussions.</p>
+<p>The red dashed lines marking OpenAI research announcements and product releases act as indicators for major increases in discussions. This not only validates the significance of these events in catalyzing public interest but also reflects the subreddit’s responsiveness to industry news and advancements.</p>
+<p>The time-series analysis underscores ChatGPT’s prominence in the technology conversation on Reddit and hints at the potential staying power of such AI technologies in public discourse. For stakeholders, these trends could inform strategies around product releases and community engagement, while for technologists and enthusiasts, they offer a window into the collective interest and concerns of the tech community.</p>
+</div>
+</section>
+</section>
+<section id="analyzing-mean-sentiment-scores-of-technology-products-over-time" class="level1">
+<h1>7. Analyzing Mean Sentiment Scores of Technology Products Over Time</h1>
+<section id="sentiment-score-of-different-topics-of-technology-products" class="level2">
+<h2 class="anchored" data-anchor-id="sentiment-score-of-different-topics-of-technology-products">Sentiment Score of Different Topics of Technology Products</h2>
+<div class="main" style="text-align: justify; text-justify: inter-word;">
+<p>In our quest to understand the changing sentiments towards technology products, we employed a sentiment analysis model to process submissions from the <code>r/Technology</code> subreddit. The model, trained on social media content, categorizes sentiments as positive, negative, or neutral, aligning well with the informal and varied language used on Reddit.</p>
+<p>We processed the submissions by labeling each with a sentiment score, then aggregated these to determine the average sentiment score associated with specific technology products over time. The graph produced from this data displays the mean sentiment scores, providing a visual representation of the community’s general feelings towards these products.</p>
+<p>The bar chart reveals that products like Copilot and Mobileye have the highest average sentiment scores, suggesting generally positive community feedback. On the other hand, Aurora has the lowest average sentiment score, indicating more negative perceptions or perhaps dissatisfaction with this product among the subreddit users.</p>
+<p><img src="Pics/nlp3.png" class="img-fluid"></p>
+<p>This analysis is particularly insightful as it not only reflects the community’s current views but can also be indicative of the perceived successes or failures of these products. It’s interesting to note the variance in sentiment scores, suggesting that while some technologies are welcomed positively, others might be facing challenges or skepticism from the tech community. Products receiving higher sentiment scores can be seen as aligning well with consumer expectations, while those with lower scores may need to address specific concerns or issues raised by the community.</p>
+<p>Additionally, this data can be used to monitor changes in public perception over time, potentially offering early warning signs for products that begin to trend negatively, or highlighting opportunities for those with increasing positive sentiments.</p>
+</div>
+</section>
+<section id="sentiment-over-time-for-key-technical-products" class="level2">
+<h2 class="anchored" data-anchor-id="sentiment-over-time-for-key-technical-products">Sentiment Over Time for Key Technical Products</h2>
+<div class="main" style="text-align: justify; text-justify: inter-word;">
+<p>We conducted a detailed time-series sentiment analysis for three significant technical products—ChatGPT, Google Bard, and Copilot—drawing from discussions within the <code>r/Technology</code> subreddit. The sentiment over time is visualized in the plots, capturing the community’s reaction to these products around key events such as releases and updates.</p>
+<p>ChatGPT’s sentiment graph shows fluctuating sentiment scores with spikes coinciding with major product announcements. A substantial peak aligns with the release of ChatGPT Plus, which suggests a strong, likely positive, reaction from the community. Over time, while sentiment dips and recovers, the overall positive trend remains, indicating sustained approval or curiosity about ChatGPT.</p>
+<p><img src="Pics/nlp4.png" class="img-fluid"></p>
+<p>The sentiment timeline for Google Bard illustrates an initial stable sentiment score with dramatic fluctuations upon its introduction and subsequent updates. The sentiment appears to fluctuate with these updates, possibly reflecting mixed community reactions to new features or changes associated with Bard.</p>
+<p><img src="Pics/nlp5.png" class="img-fluid"></p>
+<p>Copilot’s sentiment trajectory presents consistent sentiment with a notable increase around the time when services were extended to individual developers. This could reflect a positively received expansion, resonating well with the developer community on Reddit.</p>
+<p><img src="Pics/nlp6.png" class="img-fluid"></p>
+<p>These visualizations illustrate how community sentiment can shift significantly in response to product developments. Key takeaways include:</p>
+<ul>
+<li><p><strong>Event-Driven Sentiment</strong>: Major product releases and updates act as catalysts for discussion, often shifting sentiment either positively or negatively.</p></li>
+<li><p><strong>Community Engagement</strong>: Peaks in sentiment score graphs suggest heightened community engagement. For instance, Copilot’s service expansion to individuals shows a clear sentiment boost.</p></li>
+<li><p><strong>Sentiment Stabilization</strong>: After initial fluctuations, sentiment scores tend to stabilize, which might indicate the community’s adjusted perspective and acceptance of the products.</p></li>
+</ul>
+<p>Understanding these sentiment trends offers invaluable feedback to the entities behind these products. For instance, the developers of ChatGPT might take the generally positive sentiment as an affirmation of their product’s direction. Conversely, the volatility in sentiment for Google Bard suggests a more divided reception, warranting closer attention to community feedback.</p>
+<p>Overall, these time-series sentiment analyses provide a nuanced understanding of how key technological advancements are received over time by an informed and interested community, which can be crucial for steering product development and marketing strategies.</p>
+</div>
+<div class="main" style="text-align: justify; text-justify: inter-word;">
+
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./eda.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Exploratory Data Analysis</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./ml.html" class="pagination-link">
+        <span class="nav-page-text">ML</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

@@ -15,4 +15,4 @@ Using advanced data analytics techniques such as natural language processing (NL
 
 
 Access the Project
-Explore the findings and methodologies in detail at our project website: [Sentiment Influence on Technology Stocks]([url](https://gu-ppol.github.io/spring-2024-reddit-bigdata-project-team-05/)).
+Explore the findings and methodologies in detail at our project website: [Sentiment Influence on Technology Stocks]([https://gu-ppol.github.io/spring-2024-reddit-bigdata-project-team-05/]).

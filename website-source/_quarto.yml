@@ -1,0 +1,53 @@
+project:
+  type: website
+  output-dir: ../docs
+
+website:
+  title: Group 5 Big Data Project
+  page-navigation: true
+  sidebar:
+    title: "Decoding Reddit's Influence on Tech Stocks"
+    style: "docked"
+    background: "#d9bf8f"
+    search: true
+    contents:
+      - section: "Overview"
+        contents:
+          - index.qmd
+          - data-sources.qmd
+          - business-goals.qmd
+      - section: "Exploratory Data Analysis"
+        contents:
+          - eda.qmd
+      - section: "Natural Language Processing"
+        contents:
+          - nlp.qmd
+      - section: "Machine Learning"
+        contents:
+          - ml.qmd
+      - section: "Conclusion"
+        contents:
+          - conclusion.qmd
+    page-footer:
+    left: |
+      Content © 2024 by Project Team 5 <br>
+      All content licensed under a Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)
+      [![CC BY-NC 4.0](https://licensebuttons.net/l/by-nc/4.0/88x31.png)](https://creativecommons.org/licenses/by-nc/4.0/)
+    right: |
+      Made with R and [Quarto](https://quarto.org/)<br>
+      
+format:
+  html:
+    theme:
+      - lux
+      - styles.scss
+    toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
+    code-fold: false
+    code-copy: false
+    code-tools: false
+    code-overflow: wrap
+
+

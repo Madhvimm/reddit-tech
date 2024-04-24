@@ -1,0 +1,42 @@
+# Introduction
+
+
+
+## Background
+
+::: {.main style="text-align: justify; text-justify: inter-word;"}
+
+*"Once in a while, the technology comes along that is so powerful and so broadly applicable that it accelerates the normal march of economic progress. And like a lot of economists, I believe that generative AI belongs in that category."* - [Andrew McAfee, author](https://www.linkedin.com/video/live/urn:li:ugcPost:7126176289861832705/)
+
+In the digital age, the evolution of technology is not just rapid but transformative, promising solutions to myriad human problems. Amidst this technological advancement, social media platforms have emerged as one of the important indicators of public sentiment, exerting a significant influence on various sectors, including the financial market. Reddit is one of the platforms that sets itself apart with its unique community-driven content, fostering discussions that range from everyday topics to specialized subjects in technology.
+Over the years, since the technology sector has become one of the key drivers of economic growth, understanding the public and media discourse surrounding tech companies is crucial for investors, analysts, and the companies themselves and how it can influence their stock market activity. Our project aims to decode the sentiments expressed on Reddit and assess their potential impacts on the stock prices of leading technology companies. 
+
+
+The focus of the project would be Reddit's vibrant communities, particularly within the subreddits [<strong>**r/Technology**</strong>](https://www.reddit.com/r/technology/), [<strong>**r/Futurology**</strong>](https://www.reddit.com/r/Futurology/), and [<strong>**r/News**</strong>](https://www.reddit.com/r/news/). These forums attract a spectrum of participants, from technology enthusiasts and futurists to the general public, each contributing to a rich array of perspectives. By engaging and understanding the discourse within these specific forums, we aim to analyze and understand public sentiments around new technological interventions. We further strive to quantify this user engagement and decode the intricate relationship between the sentiments and their effect on stock market trends of leading tech firms, such as <strong>**Microsoft**</strong>, <strong>**Nvidia**</strong>, <strong>**Adobe**</strong>, <strong>**Alphabet**</strong>, and <strong>**Amazon**</strong>. 
+
+We would use advanced data analytics techniques, including natural language processing (NLP), machine learning (ML), and sentiment analysis, to unearth patterns and relationships within the discussions on Reddit. Leveraging cloud computing platforms like Amazon Web Services (AWS), we will efficiently process and analyze the vast Reddit dataset.
+
+This project is an endeavor to elucidate how public sentiment, as captured through online discussions, aligns with or predicts stock market trends. By examining Reddit's submissions and comments within a rigorous methodological framework, we aim to enhance the reliability and relevance of our findings. We believe integrating user-generated Reddit content with stock market data would initiate a dialogue at the intersection of social media and finance and provide practical insights for investors, market analysts, and stakeholders within the technology sector.
+
+
+<img src="Pics/logo-mcheck.jpeg" alt="Logo" style="width: 80%; height: 80%;">
+
+:::
+
+
+## About the Team
+
+::: {.main style="text-align: justify; text-justify: inter-word;"}
+
+We are a team of four students pursuing  MS in Data Science and Public Policy at Georgetown University. Our diverse backgrounds unite a shared passion for leveraging data-driven insights to address complex societal issues. In this project, we bring together our collective expertise in data analysis, machine learning, and public policy to explore the intersection of social media sentiment on financial markets. Our collaboration is grounded in a commitment to rigorous research and a shared belief in the power of data to illuminate the underpinnings of economic trends and inform policy decisions. As we delve into this project, we aim to contribute to the academic dialogue around technology and finance.
+
+
+<div style="text-align: center;">
+  <a href="https://www.linkedin.com/in/jiaqin-wu-0315b6243/" target="_blank">Jiaqin Wu</a> |
+  <a href="" target="_blank">Yetong Xu</a> |
+  <a href="https://www.linkedin.com/in/madhvi-malhotra/" target="_blank">Madhvi M</a> |
+  <a href="https://www.linkedin.com/in/member4" target="_blank">Yuyuan Kang</a>
+</div>
+
+
+:::

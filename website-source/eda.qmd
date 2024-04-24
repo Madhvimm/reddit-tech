@@ -1,0 +1,305 @@
+# Exploratory Data Analysis
+
+
+## 1. Investigating Author Contribution in the `r/Technology` and `r/Futurology` Subreddits
+
+### Understanding Engagement Dynamics in r/technology:
+
+::: {.main style="text-align: justify; text-justify: inter-word;"}
+
+We started our analysis by analyzing the distribution of user contributions within the `r/Technology` subreddit. Our approach involved aggregating submission and comment data to analyze the distribution and impact of user engagement. A key finding was the noticeable discrepancy between the volumes of comments and submissions, leading us to introduce "total_count" as a metric to encapsulate the combined contributions of each author.
+
+:::
+
+#### Scrutinizing Top Contributors:
+
+::: {.main style="text-align: justify; text-justify: inter-word;"}
+
+Our initial analysis focused on the top five most prolific authors in both submissions and comments. The '[deleted]' user category stood out as a predominant contributor. To derive more meaningful insights, we decided to exclude '[deleted]' entries from further analysis.
+
+
+<center>
+<figure>
+<figcaption><strong>**Table 1: Top 5 authors contributing to submissions in subreddit `r/Technology`:**</strong>
+
+| <strong>Author</strong> | <strong>Submission Count</strong> |
+|-------------------------|-----------------------------------|
+| [deleted]               | 33,895                            |
+| Sorin61                 | 2,545                             |
+| Wagamaga                | 2,343                             |
+| arnambiar               | 2,026                             |
+| kry_some_more           | 1,754                             |
+</figcaption>
+</figure>
+</center>
+
+
+<center>
+<figure>
+<figcaption><strong>**Table 2: Top 5 authors contributing to comments in subreddit `r/Technology`:**</strong>
+
+| <strong>Author</strong>   | <strong>Comment Count</strong> |
+|---------------------------|---------------------------------|
+| [deleted]                 | 1,010,940                       |
+| AutoModerator             | 56,074                          |
+| veritanuda                | 5,334                           |
+| happyscrappy              | 4,995                           |
+| DarthBuzzard              | 4,603                           |
+
+</figcaption>
+</figure>
+</center>
+
+:::
+
+#### Analysis of Post Volumes:
+
+::: {.main style="text-align: justify; text-justify: inter-word;"}
+
+To garner an overarching understanding of author post volumes across both comments and submissions, we amalgamate these branches to derive a new metric termed "total_count," indicating the cumulative number of posts. Our analysis zeroes in on the top 50 frequent authors, where we scrutinize the proportion of their post volume in the total posts. The resulting visualization unveils a notable trend where most users contribute more comments than submissions. Notably, the top 5 users collectively account for approximately 20% of the total number of posts, with AutoModerator leading significantly, although it's likely a bot. Furthermore, the top 30 posters collectively contribute to around 30% of the total number of posts, indicating a considerable dominance in the discourse within the technology sphere.
+
+<div style="text-align: center;">
+  <img src="Pics/eda1.png" style="width: 90%;"/>
+</div>
+
+:::
+
+
+#### Breakdown of Submission and Comment Divisions:
+
+::: {.main style="text-align: justify; text-justify: inter-word;"}
+
+Further delving into the classification of different submission and comment post conditions reveals intriguing patterns. For submission counts, we observe that users "Sorin61" and "Wagamaga" emerge as the most prolific contributors in the `r/technology` subreddit. The top 5 submission posters collectively account for approximately 18% of the total number of submissions, while the top 30 authors' submissions constitute around 38% of the total, underscoring a noticeable dominance in submission contributions as well.
+
+![](Pics/eda2.png)
+
+In the realm of comment posts, inclusive of 'AutoModerator,' the top 5 authors collectively contribute to around 23% of the total number of comments, with the top 30 authors accounting for approximately 34% of the total. Excluding 'AutoModerator,' the distribution of author contributions becomes more equitable. Nevertheless, certain authors such as veritanuda, happyscrappy, and DarthBuzzard continue to exhibit a higher level of engagement, implying a notable influence in steering the conversation within the subreddit.
+
+![](Pics/eda3.png)
+
+:::
+
+### Unveiling Author Engagement in r/Futurology:
+
+::: {.main style="text-align: justify; text-justify: inter-word;"}
+
+In our investigation of the `r/Futurology` subreddit, we turn our attention to discerning the most frequent author information and ascertaining whether the presence of **'[deleted]'** significantly influences the dataset. As depicted in the table below, the presence of **'[deleted]'** is indeed notable, prompting the necessity to exclude it from our subsequent analyses.
+
+ **Top 5 authors contributing to submissions in subreddit `r/Futurology`:**
+
+| Author            | Submission Count |
+|-------------------|------------------|
+| [deleted]         | 8,057            |
+| Gari_305          | 1,587            |
+| izumi3682         | 1,146            |
+| QuantumThinkology| 748              |
+| lughnasadh        | 662              |
+
+ **Top 5 authors contributing to comments in subreddit `r/Futurology`:**
+
+| Author          | Comment Count  |
+|-----------------|----------------|
+| [deleted]       | 600,671        |
+| FuturologyBot   | 11,926         |
+| Surur           | 5,405          |
+| AutoModerator   | 5,036          |
+| StarChild413    | 2,634          |
+
+:::
+
+#### Notable Trends in Engagement:
+
+::: {.main style="text-align: justify; text-justify: inter-word;"}
+
+A notable distinction in the `r/Futurology` subreddit is the occurrence of authors who contribute similarly to both submissions and comments. For instance, "lzumi3682" posts a comparable number of submissions and comments, while "Gari_305" even posts more submissions than comments, both figures being significant. Moreover, upon analyzing the proportions, it's evident that the top 5 authors collectively account for only 11% of the total number of posts, and the top 30 authors constitute merely 28% of the total number. This indicates a broader spectrum of contributors engaging in discussions within the `r/Futurology` subreddit compared to `r/Technology`.
+
+:::
+
+#### Submission and Comment Fluctuations:
+
+::: {.main style="text-align: justify; text-justify: inter-word;"}
+
+In our analysis of submission and comment divisions, we observe that the top 5 authors collectively share 22% of the total number of submissions, while the top 30 authors contribute to 41% of the total number. This indicates a notable dominance of a few authors in driving the submission conversation, particularly evident with users "Gari_305" and "lzumi3682."
+
+![](Pics/eda4.png)
+
+On the other hand, in the realm of comments, the top 5 authors collectively account for only 12% of the total number, and the top 30 authors contribute to 28% of the total number. However, it's worth noting that the top two contributors, "Surur" and "AutoModerator" (likely a bot), command a significant share, comprising around 4% of the total number. This suggests a more distributed engagement pattern in comments, albeit with notable contributions from certain key authors.
+
+![](Pics/eda5.png)
+
+![](Pics/eda6.png)
+
+
+This analysis provides a nuanced understanding of author contributions in both the `r/technology` and `r/Futurology` subreddits, shedding light on the diverse range of contributors and their varying levels of influence across submissions and comments. Such insights are invaluable for understanding community dynamics and the role of key contributors in shaping discourse within these Reddit communities.
+
+:::
+
+## 2. Analyzing Fluctuations in Technology Discourse Over Time
+
+::: {.main style="text-align: justify; text-justify: inter-word;"}
+
+In this section, we delve into the temporal dynamics of technology discourse within the `r/technology` and `r/Futurology` subreddits from January 2021 to February 2023. Our analysis includes four time-series plots for submissions and comments, allowing us to identify peaks and troughs in discussion volume and to assess the impact of significant events in the tech field.
+
+::: 
+
+### Discussion in r/technology:
+
+#### Comments Fluctuations:
+
+::: {.main style="text-align: justify; text-justify: inter-word;"}
+
+Upon investigating comment fluctuations in the `r/technology` subreddit, we observe a noticeable uptick in discussion volume following the release of OpenAI's research on InstructGPT models on January 27, 2022. However, this surge is short-lived, with discussion volume quickly stabilizing thereafter. Subsequently, a peak in comments occurs around May 2022, suggesting heightened engagement during this period. Interestingly, the introduction of ChatGPT and ChatGPT Plus on November 30, 2022, and February 1, 2023, respectively, does not lead to significant changes in comment volume. However, it's important to note that the decrease in discussion volume post-February 1, 2023, may be attributed to data limitations, as the dataset may not capture the latest activity accurately.
+
+![](Pics/eda7.png)
+:::
+
+#### Submission Fluctuations:
+
+::: {.main style="text-align: justify; text-justify: inter-word;"}
+
+Analyzing submission fluctuations reveals a striking pattern. From January to April 2021, there is a remarkable surge in discussion volume, which gradually stabilizes thereafter. Despite occasional peaks in September 2021, December 2022, and February 2023, the discussion volume remains notably lower compared to the initial surge observed in early 2021. This suggests a shift in submission dynamics over time, with intermittent peaks punctuating an overall decline in discussion volume.
+
+![](Pics/eda8.png)
+::: 
+
+### Discussion in r/Futurology:
+
+#### Comments Fluctuations:
+
+::: {.main style="text-align: justify; text-justify: inter-word;"}
+
+In contrast to `r/technology`, the fluctuation pattern in the `r/Futurology` subreddit exhibits distinct characteristics. Following the significant events related to OpenAI, notably the release of ChatGPT, there is a marked increase in comment volume, particularly evident after November 2022. Subsequent peaks in discussion volume coincide with the occurrence of these events, with the highest engagement observed between November 2022 and February 2023. This suggests a strong correlation between OpenAI's developments and heightened discussion activity within the `r/Futurology` subreddit.
+
+![](Pics/eda9.png)
+:::
+
+#### Submission Fluctuations:
+
+::: {.main style="text-align: justify; text-justify: inter-word;"}
+
+Similarly, the submission fluctuation pattern mirrors that of comments, indicating a surge in discussion volume following the introduction of ChatGPT. The events in November 2022 and February 2023 precipitate a substantial increase in submission activity, with peak discussion volume recorded during these periods. This underscores the significant impact of ChatGPT on stimulating discussion and engagement within the `r/Futurology` community.
+
+![](Pics/eda10.png)
+
+
+In summary, our analysis reveals nuanced patterns of discussion volume fluctuations in both `r/technology` and `r/Futurology`, influenced by significant events in the tech field, particularly those related to OpenAI's advancements. These insights shed light on the evolving dynamics of technology discourse on Reddit, highlighting the role of emerging technologies in shaping online discussions and community engagement.
+
+::: 
+
+## 3. Exploring Stock Price Trends of Top 5 Tech Companies (January 2021 - February 2023)
+
+::: {.main style="text-align: justify; text-justify: inter-word;"}
+
+In this segment, we extend our analysis beyond discussion volume to investigate whether significant innovation events impacting other companies influence the stock prices of traditional tech giants. Our selected companies for scrutiny include Microsoft, Nvidia, Adobe, Alphabet, and Amazon. By examining their stock price changes from January 2021 to February 2023, we aim to discern any discernible trends coinciding with key innovation events.
+
+Our findings align with our initial hypothesis. Preceding January 27, 2022, the stock prices of these tech companies exhibit an overall upward trajectory or remain steady. However, following the occurrence of OpenAI's significant events, particularly on January 27, 2022, we observe a notable downturn in stock prices across the board. Particularly noteworthy is the evident decline in stock prices for Amazon and Google (Alphabet) post-OpenAI events. Interestingly, Nvidia, Adobe, and Alphabet witness a decrease in stock prices following January 27, 2022, but around October 2022, their stock prices stabilize or experience a slight increase, seemingly unaffected by the OpenAI events.
+
+![](Pics/eda11.png)
+
+Further analysis may be warranted to unravel the underlying factors contributing to the divergent stock price trends among these companies. Factors such as market sentiment, company-specific developments, and broader industry trends could all play a role in shaping stock price dynamics. Moreover, exploring the potential impact of OpenAI's innovations on market perception and investor sentiment may offer valuable insights into the observed stock price fluctuations.
+
+Our exploration of stock price trends among top tech companies provides valuable insights into the interplay between innovation events and market dynamics. By examining the responses of leading tech firms to significant industry developments, we gain a deeper understanding of how innovation influences market behavior and investor sentiment. Such insights are crucial for investors, policymakers, and industry stakeholders seeking to navigate the ever-evolving landscape of the technology sector.
+
+::: 
+
+## 4. Exploring Technology Themes in `r/news` Subreddits
+
+::: {.main style="text-align: justify; text-justify: inter-word;"}
+
+In this section, we delve into the world of technology-related news within the `r/news` subreddit. Our objective is to filter the vast array of news articles to focus solely on technology-related content. To achieve this, we employ Natural Language Processing (NLP) techniques, leveraging predefined keywords and 11 distinct themes within the technology domain.
+
+::: 
+
+### Defined Themes and Keywords:
+
+::: {.main style="text-align: justify; text-justify: inter-word;"}
+
+We have defined 11 thematic areas along with their corresponding keywords to capture various facets of technology:
+
+| Theme                   | Keywords                                                                                  |
+|-------------------------|-------------------------------------------------------------------------------------------|
+| Artificial Intelligence | artificial intelligence, ai, chatgpt, gpt, openai, intelligence, machine intelligence, virtual intelligence |
+| Machine Learning        | machine learning, ml, deep learning, neural networks, pattern recognition, predictive modeling, statistical learning |
+| Natural Language Processing | natural language processing, nlp, large language model, language understanding, text analysis, speech recognition |
+| Computer Vision         | computer vision, visual recognition, image processing, object detection, scene understanding |
+| Robotics                | robotics, autonomous vehicles, self-driving cars, robotic systems, automated vehicles       |
+| Virtual Assistants      | virtual assistants, chatbots, conversation agents, automated helpers                       |
+| Analytics               | big data analytics, data analysis, data mining, data insights                              |
+| Cloud Computing         | cloud computing, cloud services, cloud platforms, cloud infrastructure                     |
+| Edge Computing          | edge computing, edge devices, edge analytics, edge networks                                |
+| Internet of Things      | internet of things, iot, smart devices, connected devices                                  |
+| Quantum Computing       | quantum computing, quantum algorithms, quantum cryptography, quantum networks              |
+
+:::
+
+### Filtering and Analysis:
+
+::: {.main style="text-align: justify; text-justify: inter-word;"}
+
+After filtering the news articles using our predefined keywords, we obtain 31,402 records in the comment division, representing 0.15% of the total news count, and 2,700 records in the submission division, comprising 0.31% of the total news count. Subsequently, we categorize these records into different themes to discern prevailing trends in technology-related news coverage.
+
+:::
+
+### Insights:
+
+#### Comments Division:
+
+::: {.main style="text-align: justify; text-justify: inter-word;"}
+
+- The analysis reveals that the predominant theme across all news articles is Artificial Intelligence (AI). Other topics such as Machine Learning, Robotics, Virtual Assistants, and Internet of Things are comparatively less represented.
+- Notably, there are no news articles directly related to themes such as Computer Vision, Analytics, Cloud Computing, Edge Computing, or Quantum Computing during the period from January 2021 to February 2023.
+
+![](Pics/eda12.png)
+::: 
+
+#### Submission Division:
+
+::: {.main style="text-align: justify; text-justify: inter-word;"}
+
+- Similarly, the majority of submissions also revolve around the theme of Artificial Intelligence (AI). However, there is a slightly broader representation of other themes such as Machine Learning, Internet of Things, Robotics, and Virtual Assistants.
+- Conversely, no submissions directly address themes such as Quantum Computing, Edge Computing, Cloud Computing, Analytics, or Computer Vision during the specified time frame.
+
+![](Pics/eda13.png)
+::: 
+
+### Limitations:
+
+::: {.main style="text-align: justify; text-justify: inter-word;"}
+
+It's important to acknowledge potential biases and limitations in our approach. We may have overlooked colloquial expressions or omitted certain keywords, leading to underrepresentation of specific themes. Additionally, the nature of social media platforms like Reddit may influence the types of news articles shared and discussed, further impacting our analysis.
+
+Despite these limitations, our exploration provides valuable insights into the prevalent technology themes within the `r/news` subreddit during the specified period.
+
+:::
+
+## 5. Analyzing Technology News Coverage Over Time
+
+::: {.main style="text-align: justify; text-justify: inter-word;"}
+
+In this section, we aim to dissect the dynamics of technology news coverage within the `r/news` subreddit over time. Our focus is on understanding whether significant technology events prompt an upsurge in the discussion volume of technology-related news articles.
+
+:::
+
+### Insights from Comments Division:
+
+::: {.main style="text-align: justify; text-justify: inter-word;"}
+
+Upon analyzing the comment division, several notable peaks in technology news discussion emerge, particularly in November 2021, February 2022, June 2022, and February 2023. These spikes in discussion volume coincide with significant events in the technology landscape, such as the introduction of ChatGPT Plus. Interestingly, despite the introduction of ChatGPT, the discussion volume remains consistently high, indicating sustained interest and engagement within the community.
+
+![](Pics/eda14.png)
+
+:::
+
+### Insights from Submission Division:
+
+::: {.main style="text-align: justify; text-justify: inter-word;"}
+
+Contrary to the comments division, the submission volume exhibits a different trend. Following the first OpenAI event, there is minimal change in submission volume. However, after the introduction of ChatGPT and the subsequent announcement of ChatGPT Plus, we observe a steady increase in submission volume. This culminates in a peak in January 2023, suggesting that ChatGPT's introduction has indeed influenced the focus and reporting of technology-related news within the subreddit.
+
+![](Pics/eda15.png)
+
+Our analysis unveils the nuanced interplay between significant technology events and news coverage within the `r/news` subreddit. While spikes in discussion volume are observed following key events, the impact varies between the comments and submission divisions. While ChatGPT's introduction has led to sustained engagement in discussions, it has also catalyzed an increase in the reporting of technology-related news articles. These findings underscore the profound influence of technological advancements on social media discourse and news reporting practices.
+
+
+
+:::

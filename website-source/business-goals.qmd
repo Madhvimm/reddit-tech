@@ -1,0 +1,81 @@
+# Business Goals
+
+::: {.main style="text-align: justify; text-justify: inter-word;"}
+
+For our project, we will analyze Reddit submissions and comments on technology-related topics, focusing on subreddits like [<strong>**`r/Technology`**</strong>](https://www.reddit.com/r/technology/), [<strong>**`r/Futurology`**</strong>](https://www.reddit.com/r/Futurology/), and [<strong>**`r/News`**</strong>](https://www.reddit.com/r/news/). Our analysis is aimed at stakeholders such as investors, market analysts, and tech companies.
+
+:::
+
+## EXPLORATORY DATA ANALYSIS (EDA) GOALS
+
+::: {.main style="text-align: justify; text-justify: inter-word;"}
+
+<strong>**1. Investigating Author Contribution in the `r/Technology` and `r/Futurology` Subreddits**</strong>
+
+We have conducted a comprehensive examination of the distribution of posts and comments by individual authors in 'r/Technology' and 'r/Futurology'. By aggregating and analyzing data based on authorship, we discerned the diversity of the contributor base, identifying whether a handful of prolific authors dominate discussions or if there's a widespread contribution across the community. This analysis involved assessing the volume of contributions per author and identifying patterns that may suggest central figures or influencers within these subreddits.
+
+
+<strong>**2. Temporal Analysis of Technology Discourse Over Time**</strong>
+
+In our analysis, we've delved into the dynamic landscape of technology-related discussions on Reddit, with a specific focus on technological milestones in Large Language Models, such as the launch of [<strong>**Chat GPT-3.5**</strong>](https://openai.com/blog/chatgpt) and the progression to  [<strong>**Chat GPT-4**</strong>](https://openai.com/blog/chatgpt-plus). Our goal was to assess the impact of these advancements on the dialogue within 'r/Technology' and 'r/Futurology'. By examining engagement patterns and analyzing both the submissions and comments over the selected timeframes, we aimed to identify and understand trends in the quantity and depth of technology-related discussions among Reddit users. This analysis provided insights into how significant new tech developments catalyze shifts in public discourse, reflecting the community's response to technological evolution. Through this temporal scrutiny, we've gained a nuanced understanding of how major tech events influence and resonate within Reddit's communities, offering a window into the collective sentiment and interests over time.
+
+<strong>**3. Exploring Stock Price Trends of Top 5 Tech Companies (January 2021 - February 2023)**</strong>
+
+In this analysis, we've conducted a detailed examination of the stock price movements of five leading tech corporations: <strong>**Microsoft**</strong>, <strong>**Nvidia**</strong>, <strong>**Adobe**</strong>, <strong>**Alphabet**</strong>, and <strong>**Amazon**</strong>. These are some of the leading companies that have a significant impact on global technology and markets. Our primary goal was to assess how their stock prices fluctuated from January 2021 to February 2023, capturing the market dynamics.
+
+Additionally, we paid particular attention to the correlation between major tech announcements or product launches and stock market reactions. A key focus was the launch of ChatGPT 3.5 and its subsequent iterations, exploring how such pivotal developments influenced investor sentiment and stock performance. 
+
+<strong>**4. Exploring Technology Themes in `r/News` Subreddits**</strong>
+
+In this analysis, we conducted an in-depth exploration of various technological themes within the `r/News` subreddit. Our investigation covered eleven distinct areas, including Artificial Intelligence (AI), Machine Learning (ML), and Natural Language Processing (NLP), among others. We aimed to analyze the frequency and distribution of submissions and comments related to these themes from January 2021 to March 2023.
+
+By dissecting the content within `r/news`, we sought to understand how different technology-related topics have captivated the subreddit's audience. This involved quantifying the volume of discussions and identifying trends over the specified period. Our goal was to uncover the relative prominence of each technological theme, providing a comprehensive overview of how various tech subjects engage and resonate with the `r/News` community.
+Through this examination, we endeavored to derive valuable insights into the thematic focus and user engagement, presenting a snapshot of the technological discourse prevalent in a news-focused online community.
+
+
+<strong>**5. Analyzing Technology News Coverage Over Time**</strong>
+
+For this analysis, we utilized keyword-matching techniques to filter and isolate technology-related news articles within the `r/News` subreddit. Our objective was to discern patterns in tech news coverage, mainly focusing on whether significant tech events or milestones correspond with noticeable surges in news reporting within this subreddit. 
+
+We did a time-series analysis of news articles, aligning them with the timeline of major tech events to detect any alignment or correlation. The goal was to gain insights into how the media's attention to technology fluctuates in response to significant industry occurrences, shedding light on the dynamics of technology news coverage and its responsiveness to the sector's evolving landscape.
+Through this comprehensive analysis, we aspire to provide a nuanced understanding of the interplay between tech events and the corresponding shifts in news reporting patterns within the `r/News` community.
+
+:::
+
+## NATURAL LANGUAGE PROCESSING (NLP) GOALS
+
+::: {.main style="text-align: justify; text-justify: inter-word;"}
+
+
+<strong>**6. Identifying Most Frequently Discussed Technical Products in `r/Technology`**<strong>
+
+Our EDA has highlighted the most commonly broached subjects within the `r/news` subreddit. We aim to delve deeper into the discourse specifics, particularly concerning detailed technical products such as ChatGPT, among others. The objective is to ascertain the most discussed technical products within the `r/Technology` subreddit, thereby illuminating the evolving trends and shifts in the tech product landscape. This analysis will provide insight into the technological interests and concerns of the subreddit's community over time.
+
+
+<strong>**7. Analyzing Mean Sentiment Scores of Technology Products Over Time**</strong>
+
+In our analysis, we'll initially identify a range of technology products or themes to create focused categories. Then, each Reddit post within the `r/Technology` subreddit will be categorized based on its publication date and the specific technology product or theme it discusses. We plan to construct a detailed sentiment trajectory over time by calculating the mean sentiment score for posts within each technology bucket. This approach will allow us to delve into the community's perceptions and attitudes toward these products, further enabling us to spotlight products that consistently receive negative sentiment, unraveling patterns of dissatisfaction or specific concerns. Through this analysis, we intend to offer an understanding of public sentiment toward various technology products.
+
+
+<strong>**8. Tracking Sentiment Trends in Media-Driven (`r/News`) vs. Public-Driven (`r/Technology`) Tech Discussions**</strong>
+
+This analysis delves into the nuances of sentiment trends within the media-driven `r/News` and the public-driven `r/Technology` subreddits. By computing the daily mean sentiment score for each subreddit for our selected tech categories, we aim to chart how perceptions and attitudes towards these topics vary over time. This approach would provide a comparative picture of trends and how public and media narratives around technology have evolved and interacted across different periods.
+
+:::
+
+## MACHINE LEARNING (ML) GOALS
+
+::: {.main style="text-align: justify; text-justify: inter-word;"}
+
+<strong>**9. Correlating Public and Media Sentiment Scores on Reddit with Stock Price Movements of Top Tech Companies **</strong>
+
+In this segment of our analysis, we aim to understand the relationship between Reddit-derived sentiment scores and the stock price movements of the top five technology companies. We've identified the following variables: the daily average public sentiment from `r/Technology` and the average media sentiment from `r/News`. These metrics provide a nuanced view of the prevailing sentiments in technology discussions.
+By leveraging these sentiment indicators, we would employ machine learning models to predict the stock price changes for the top 5 tech companies: Microsoft, Nvidia, Adobe, Alphabet, and Amazon. Our objective is to determine the degree to which shifts in public opinion and media coverage on Reddit correlate with and potentially influence the stock market performance of these tech giants. We would use Root Mean Square Error (RMSE) as a metric to assess our models' accuracy and predictive power. This analysis is designed to pinpoint which technology company's stock is most affected by the sentiment dynamics on Reddit, offering valuable insights into the interplay between online discourse and financial markets.
+
+<strong>**10.  Classifying post origins between `r/Technology` and `r/News`?**</strong>
+
+We plan to use a variety of classifier models to determine whether a post originates from `r/Technology`, which reflects public opinion, or `r/News`, which represents media opinion. Our analysis will leverage various features from the dataset, with a particular focus on the textual content of the posts. We aim to identify and understand the distinctive features and language used in each subreddit's discussions.
+This will test the accuracy of our classification models and aims to reveal the unique textual elements that differentiate public-driven discussions in `r/Technology` from media-oriented narratives in `r/News`. By pinpointing these distinguishing features, we hope to gain a deeper insight into the content and communication styles in each subreddit, enhancing our understanding of how different audiences engage with technology-related topics.
+
+
+:::

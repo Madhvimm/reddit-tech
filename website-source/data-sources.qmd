@@ -1,0 +1,76 @@
+# Data Sources
+
+## 1. **[Reddit Data](https://www.reddit.com/dev/api/)**
+
+::: {.main style="text-align: justify; text-justify: inter-word;"}
+
+Our project leverages a comprehensive dataset curated by Professor Arora. It leverages Reddit's API to encapsulate the discussions from January 2021 to March 2023. This dataset is instrumental in examining the digital dialogue within key technology-focused communities on Reddit.
+
+- <strong>**Submissions**:</strong> The dataset includes an extensive collection of 109 million submissions stored across 412 GB of plain-text JSON files. These submissions, spanning various subreddits, provide a wide lens on the topics that engage the Reddit community.
+
+- <strong>**Comments**:</strong> To complement the submissions, the dataset also contains 701 million comments, recorded in 918 GB of plain-text JSON files. These comments provide a depth to the discussions and revealing the community's sentiment on a granular level.
+
+We refined our dataset to focus on the following subreddits, each offering distinctive insights into the technology discourse:
+
+- <strong>[`r/Technology`](https://www.reddit.com/r/technology/):</strong> A primary forum for public dialogue on general technology advancements.
+
+- <strong>[`r/Futurology`](https://www.reddit.com/r/Futurology/):</strong> A platform for discussions on future technology trends and innovations.
+
+- <strong>[`r/News`](https://www.reddit.com/r/news/):</strong> While broader in scope, this subreddit offers a lens into how technology topics are portrayed and perceived in media-driven discussions.
+
+
+To provide a clearer picture of the scale of our analysis and the breadth of discussions captured from Reddit, here is a detailed breakdown of the number of submissions and comments we've collected from each selected subreddit between January 2021 and February 2023:
+
+
+| <strong>Subreddit</strong>  | <strong>Submissions</strong> | <strong>Comments</strong> |
+|-----------------------------|------------------------------|---------------------------|
+| r/Technology                | 181,596                      | 7,320,261                 |
+| r/Futurology                | 44,744                       | 3,034,605                 |
+| r/News                      | 868,430                      | 21,525,282                |
+
+
+
+
+<div style="text-align: center;">
+  <a href="https://www.reddit.com/dev/api/" target="_blank">
+    <img src="Pics/Reddit_Lockup_Logo.svg" style="width: 500px;" />
+  </a>
+</div>
+
+
+
+:::
+
+
+<br>
+
+
+
+## 2. <strong>**[Yahoo Finance Data](https://finance.yahoo.com/)**</strong>
+
+::: {.main style="text-align: justify; text-justify: inter-word;"}
+
+To analyze the relationship between online discussions and market performance, we utilized the <a href="https://pypi.org/project/yfinance/" target="_blank">`yfinance`</a> library to obtain historical stock data for major technology companies, enhancing our understanding of market dynamics in relation to Reddit discourse.
+
+
+- <strong>**Stock Price Retrieval:**</strong> Using `yfinance`, we fetched the adjusted close prices for a selected group of tech companies: <a href="https://finance.yahoo.com/quote/MSFT/" target="_blank"><em>Microsoft (MSFT)</em></a>, <a href="https://finance.yahoo.com/quote/NVDA/" target="_blank"><em>Nvidia (NVDA)</em></a>, <a href="https://finance.yahoo.com/quote/ADBE/" target="_blank"><em>Adobe (ADBE)</em></a>, <a href="https://finance.yahoo.com/quote/GOOG/" target="_blank"><em>Alphabet (GOOG)</em></a>, and <a href="https://finance.yahoo.com/quote/AMZN/" target="_blank"><em>Amazon (AMZN)</em></a>. Our focus was on the daily stock metrics from January 1, 2021, to February 28, 2023, aligning with the timeline of our Reddit dataset.
+
+- <strong>**Data Organization:**</strong> The retrieved stock data was structured into a <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html" target="_blank">pandas DataFrame</a>, where each column represents a company, and each row corresponds to the adjusted closing price for a given day. This structured format enables us to efficiently analyze the stock price trends alongside the Reddit sentiment data.
+
+
+
+Through this process, we aim to decode the potential correlations between the stock market trends of these tech giants and the sentiment trends within the technology-related discussions on Reddit, providing a holistic view of how online narratives may align with or diverge from financial market movements.
+
+:::
+
+<div style="text-align: center;">
+  <a href="https://finance.yahoo.com/" target="_blank">
+    <img src="Pics/yahoofinance.png" style="display: inline; margin-right: 10px; width: 400px;"/>
+  </a>
+</div>
+
+
+
+
+
+
